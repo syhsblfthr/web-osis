@@ -16,19 +16,49 @@ $spacers: map-merge($spacers, (
 @import "../bootstrap/scss/reboot";
 @import "../bootstrap/scss/images";
 @import "../bootstrap/scss/helpers";
-@import "../bootstrap/scss/utilities";
 @import "../bootstrap/scss/containers";
+
+@import "../bootstrap/scss/utilities";
+$utilities: map-merge(
+	$utilities,
+	(
+		"width": map-merge(
+			map-get($utilities, "width"),
+			(
+				values: map-merge(
+					map-get(map-get($utilities, "width"), "values"),
+					(
+						1rem: 1rem
+					)
+				)
+			)
+		)
+	)
+);
 
 @import "../bootstrap/scss/utilities/api";
 
-@import "../bootstrap/scss/nav";
-@import "../bootstrap/scss/card";
-@import "../bootstrap/scss/navbar";
+@import "../bootstrap/scss/close";
 @import "../bootstrap/scss/buttons";
 
-* {
-	box-sizing: border-box;
-	font-family: 'poppins';
+@import "modal";
+
+@font-face {
+	font-weight: 300;
+	font-family: "Poppins";
+	src: url("assets/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+	font-weight: 400;
+	font-family: "Poppins";
+	src: url("assets/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+	font-weight: 700;
+	font-family: "Poppins";
+	src: url("assets/fonts/Poppins-Bold.ttf");
 }
 
 :root {
@@ -47,22 +77,67 @@ $spacers: map-merge($spacers, (
 	--box-shadow-secondary: rgba(149, 157, 165, 0.2) 0px 8px 24px;;
 }
 
+ul {
+	margin: 0 !important;
+}
+
 body {
+	font-family: "Poppins" !important;
 }
 
-.navbar {
-	height: 10vh;
-	box-shadow: var(--box-shadow-primary);
-	background: rgb(31, 31, 31) !important;
+img {
+	max-height: 100%;
 }
 
-a.nav-link {
-	color: var(--white-primary) ;
+$navbar-height: 10vh;
+$primary-color: #fff;
+
+#navbar {
+	width: 100%;
+	z-index: 1;
+	display: flex;
+	position: fixed;
+	padding: 0 2.5vw;
+	align-items: center;
+	color: $primary-color;
+	height: $navbar-height;
+	background-color: #222;
+	justify-content: space-between;
+
+	> .logo {
+		height: 100%;
+		display: flex;
+		padding: 1vh 0;
+		column-gap: 1vw;
+		font-weight: bold;
+		align-items: center;
+	}
+
+	> .list {
+		display: flex;
+		column-gap: 1vw;
+		list-style: none;
+
+	}
 }
 
-a.nav-link:hover,
-.active {
-	color: var(--red-primary) !important;
+.nav-link {
+	color: #999;
+	text-decoration: none;
+	transition: color .25s;
+
+	&:hover, &.active {
+		color: #fff;
+	}
+}
+
+.navbar > div,
+.navbar-nav {
+	display: flex
+}
+
+.navbar-nav {
+	column-gap: 1rem;
 }
 
 .fw-black {
@@ -95,17 +170,18 @@ a.nav-link:hover,
 }
 
 .text-box {
-	padding: var(--box-padding-y) var(--box-padding-x);
-	background-color: var(--red-primary);
+	font-weight: 700;
 	color: var(--white-primary);
+	background-color: var(--red-primary);
+	padding: var(--box-padding-y) var(--box-padding-x);
 }
 
 .visi-misi {
 	background-color: var(--red-primary);
-}
 
-.visi-misi h2 {
-	font-size: 7rem;
+	h2 {
+		font-size: 7rem;
+	}
 }
 
 .misi-content p {
@@ -124,20 +200,46 @@ a.nav-link:hover,
 	border-radius: 100%;
 }
 
-#fotoJojo,
-#fotoRadit {
-	object-position: top;
-}
-
 .custom-btn {
 	padding: var(--btn-padding-y) var(--btn-padding-x);
 	border: 1px solid var(--red-primary);
 	color: var(--red-primary);
 	text-decoration: none;
 	transition: 0.15s;
+
+	&:hover {
+		color: var(--white-primary);
+		background-color: var(--red-primary);
+	}
 }
 
-.custom-btn:hover {
-	background-color: var(--red-primary);
-	color: var(--white-primary);
+#program {
+	margin-bottom: 5vh;
+}
+
+.program-card {
+	border: none;
+	display: flex;
+	row-gap: 2rem;
+	padding: 20px;
+	border-radius: 1vmin;
+	flex-direction: column;
+	background-color: #fff;
+	transition: opacity .5s;
+	box-shadow: 1.25vh 1.25vw 2.5vmin rgba(0, 0, 0, .25);
+
+	&:hover {
+		opacity: .5;
+	}
+
+	.title {
+		display: flex;
+		text-align: center;
+		justify-content: center;
+
+		> span {
+			width: 25%;
+			font-size: 2rem;
+		}
+	}
 }

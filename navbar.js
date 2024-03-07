@@ -1,18 +1,23 @@
 {
-	const navbar_buttons 		 = document.getElementsByClassName("nav-link");
-	let active_navbar_button = navbar_buttons[0];
+	const navbarButtons 		 = document.getElementsByClassName("nav-link");
+	let activeNavbarButton = navbarButtons[0];
 
 	const onClick = (evt) =>  {
-		const navbar_button = evt.target;
+		const navbarButton = evt.target;
 
-		active_navbar_button.classList.remove("active");
+		activeNavbarButton.classList.remove("active");
 
-		active_navbar_button = navbar_button;
-		active_navbar_button.classList.add("active");
+		activeNavbarButton = navbar_button;
+		activeNavbarButton.classList.add("active");
 	};
 
-	const navbar_buttons_length = navbar_buttons.length;
-	for (let idx = 0; idx < navbar_buttons_length; ++idx) {
-		navbar_buttons[idx].addEventListener("click", onClick);
+	const navbarButtonsLength = navbarButtons.length;
+	for (let idx = 0; idx < navbarButtonsLength; ++idx) {
+		navbarButtons[idx].addEventListener("click", onClick);
+	}
+
+	function enableNav(idx) {
+		activeNavbarButton.classList.remove("active");
+		(activeNavbarButton = navbarButtons[idx]).classList.add("active");
 	}
 }

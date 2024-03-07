@@ -1,0 +1,46 @@
+$modal-bg-color: #fff;
+
+.modal-background {
+	top: 0;
+	left: 0;
+	opacity: 0;
+	z-index: -1;
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	position: fixed;
+	padding-top: 10vh;
+	place-items: center;
+	transition: opacity .25s, z-index .25s;
+	background-color: rgba(0, 0, 0, 0.90);
+
+	&.show {
+		opacity: 1;
+		z-index: 2;
+	}
+}
+
+.modal {
+	width: 80%;
+	display: flex;
+	padding: 2.5%;
+	border-radius: 2vmin;
+	flex-direction: column;
+	background-color: $modal-bg-color;
+	max-height: calc((100% - 10vh) * 0.90);
+}
+
+.modal-links {
+	display: flex;
+	column-gap: 15px;
+
+	> button {
+		border: none;
+		display: flex;
+		padding: 1rem;
+		column-gap: 5px;
+		border-radius: .5rem;
+		background-color: #FFF;
+		box-shadow: #AAA 0 0 10px;
+	}
+}

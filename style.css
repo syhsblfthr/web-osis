@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("fonts.css");
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -7818,33 +7819,37 @@ progress {
   box-shadow: #AAA 0 0 10px;
 }
 
-@font-face {
-  font-weight: 300;
-  font-family: "Poppins";
-  src: url("assets/fonts/Poppins-Regular.ttf");
+#formContainer {
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  z-index: -1;
+  height: 100vh;
+  display: grid;
+  position: fixed;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  transition: opacity 0.25s;
 }
-@font-face {
-  font-weight: 400;
-  font-family: "Poppins";
-  src: url("assets/fonts/Poppins-Regular.ttf");
+#formContainer.show {
+  opacity: 1;
+  z-index: 2;
 }
-@font-face {
-  font-weight: 700;
-  font-family: "Poppins";
-  src: url("assets/fonts/Poppins-Bold.ttf");
+#formContainer > * {
+  position: absolute;
 }
-:root {
-  --red-primary: #ff4444;
-  --white-primary: #f5f5f5;
-  --black-primary: #1f1f1f;
-  --black-secondary: #282828;
-  --black-tertiary: #333333;
-  --btn-padding-y: 0.5em;
-  --btn-padding-x: 2em;
-  --box-padding-y: 0.25em;
-  --box-padding-x: 0.5em;
-  --box-shadow-primary: 0 2px 20px 0 rgba(0, 0, 0, 0.05);
-  --box-shadow-secondary: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+#formContainer > span {
+  z-index: 2;
+  visibility: hidden;
+}
+#formContainer > span.show {
+  visibility: visible;
+}
+#formContainer > iframe {
+  z-index: 1;
+  border-radius: 1vmin;
+  background-color: white;
 }
 
 ul {
@@ -7909,13 +7914,13 @@ img {
 
 .btn.kontak {
   transition: 0.15s;
-  color: var(--white-primary);
-  border: 1px solid var(--white-primary);
-  padding: var(--btn-padding-y) var(--btn-padding-x);
+  color: #f5f5f5;
+  border: 1px solid #f5f5f5;
+  padding: 0.5em 2em;
 }
 .btn.kontak:hover {
-  color: var(--red-primary);
-  background-color: var(--white-primary);
+  color: #9a3d36;
+  background-color: #f5f5f5;
 }
 
 .vh-100 {
@@ -7930,13 +7935,14 @@ img {
 
 .text-box {
   font-weight: 700;
-  color: var(--white-primary);
-  background-color: var(--red-primary);
-  padding: var(--box-padding-y) var(--box-padding-x);
+  color: #f5f5f5;
+  background-color: #9a3d36;
+  box-sizing: content-box !important;
+  padding: 0.5em 1em;
 }
 
 .visi-misi {
-  background-color: var(--red-primary);
+  background-color: #9a3d36;
 }
 .visi-misi h2, .visi-misi .h2 {
   font-size: 7rem;
@@ -7948,7 +7954,7 @@ img {
 
 .card-pengurus {
   padding: 13px auto 13px 13px !important;
-  box-shadow: var(--box-shadow-secondary);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .pengurus-img img {
@@ -7959,15 +7965,15 @@ img {
 }
 
 .custom-btn {
-  padding: var(--btn-padding-y) var(--btn-padding-x);
-  border: 1px solid var(--red-primary);
-  color: var(--red-primary);
+  padding: 0.5em 2em;
+  border: 1px solid #9a3d36;
+  color: #9a3d36;
   text-decoration: none;
   transition: 0.15s;
 }
 .custom-btn:hover {
-  color: var(--white-primary);
-  background-color: var(--red-primary);
+  color: #f5f5f5;
+  background-color: #9a3d36;
 }
 
 #program {
@@ -7985,7 +7991,7 @@ img {
   transition: opacity 0.5s;
   box-shadow: 1.25vh 1.25vw 2.5vmin rgba(0, 0, 0, 0.25);
 }
-.program-card:hover {
+.program-card:hover, .program-card:active {
   opacity: 0.5;
 }
 .program-card .title {

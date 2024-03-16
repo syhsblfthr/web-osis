@@ -1,0 +1,13 @@
+@use "style";
+
+.text-box {
+	@include style.\.text-box;
+}
+
+.program-card {
+	@include style.\.program-card;
+}
+
+#beranda {
+	@include style.\#beranda;
+}

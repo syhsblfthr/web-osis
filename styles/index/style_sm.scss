@@ -1,0 +1,18 @@
+@use "style";
+
+.text-box {
+	@include style.\.text-box;
+}
+
+.program-card {
+	@include style.\.program-card(
+		$width: 25%
+	);
+}
+
+#beranda {
+	@include style.\#beranda(
+		$height: 50vh,
+		$headingFontSize: 2rem
+	);
+}

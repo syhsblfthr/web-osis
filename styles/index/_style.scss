@@ -1,0 +1,192 @@
+@use "../globals/variables";
+
+body {
+	color: #fff;
+}
+
+main {
+	width: 100%;
+	padding-top: 5vh;
+}
+
+section {
+	width: 100%;
+}
+
+footer {
+	width: 100%;
+	display: flex;
+	padding: 2.5vh 0;
+	margin-top: 25vh;
+	column-gap: 2.5rem;
+	justify-content: center;
+	background-color: variables.$red-primary;
+
+	> a {
+		display: grid;
+		padding: 1rem 2rem;
+		place-items: center;
+		border-radius: 1rem;
+		transition: box-shadow .25s;
+
+		&:hover {
+			box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, .25);
+		}
+
+		> img {
+			width: 4rem;
+		}
+	}
+}
+
+.hidden {
+	display: none;
+}
+
+@mixin \.text-box(
+	$font-size: 1.5em,
+	$font-weight: bold,
+	$padding: 0.5rem 1rem,
+	$color: variables.$white-primary,
+	$background-color: variables.$red-primary
+) {
+	color: $color;
+	padding: $padding;
+	min-width: 5.5rem;
+	font-size: $font-size;
+	font-weight: $font-weight;
+	background-color: $background-color;
+}
+
+
+@mixin \.program-card(
+	$width: 35%,
+	$row-gap: 1.5rem,
+	$padding: 1rem 2rem
+) {
+	width: $width;
+	display: flex;
+	row-gap: $row-gap;
+	padding: $padding;
+	align-items: center;
+	border-radius: 1rem;
+	text-decoration: none;
+	box-sizing: border-box;
+	flex-direction: column;
+	background-color: #fff;
+	outline: .1rem solid rgba(0, 0, 0, .25);
+	transition: box-shadow .25s, outline-width .25s;
+
+	&:hover, &:active {
+		outline-width: 0;
+		box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, .25);
+	}
+
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+
+	> div {
+		display: flex;
+		row-gap: .75rem;
+		text-align: center;
+		align-items: center;
+		flex-direction: column;
+
+		> span:not(.text-box) {
+			font-size: 1.1rem;
+		}
+	}
+}
+
+@mixin \#beranda($height: 100vh, $headingFontSize: 4rem) {
+	color: #222;
+	height: 100vh;
+	text-align: center;
+	justify-content: center;
+
+	&, > div {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	> div {
+		> span:not(.text-box) {
+			font-weight: bold;
+			font-size: $headingFontSize;
+		}
+	}
+}
+
+#visi-misi {
+	color: #fff;
+	display: flex;
+	box-sizing: border-box;
+
+	padding: 0 1rem;
+	@media screen and (min-width: 1440px) {
+		padding: 0 5rem;
+	}
+	row-gap: 2.5rem;
+	flex-direction: column;
+
+	> div {
+		display: flex;
+		text-align: center;
+
+		@media screen and (min-width: 1440px) {
+			padding: 0 4rem;
+			text-align: left;
+			flex-direction: row;
+		}
+
+		flex-direction: column;
+
+		padding: 1rem 2rem;
+		column-gap: 4rem;
+		align-items: center;
+		justify-content: space-between;
+		background-color: variables.$red-primary;
+
+		> span:first-child {
+			font-size: 7rem;
+			font-weight: bold;
+		}
+
+		&#misi {
+			@media screen and (min-width: 1440px) {
+				flex-direction: row-reverse;
+			}
+
+			> div {
+				display: flex;
+				row-gap: 2rem;
+				flex-direction: column;
+				@media screen and (min-width: 1440px) {
+					flex-direction: row;
+				}
+				text-align: center;
+			}
+		}
+	}
+}
+
+#program {
+	width: 100%;
+	display: flex;
+	row-gap: 3rem;
+	margin-top: 10vh;
+	margin-bottom: 5vh;
+	align-items: center;
+	flex-direction: column;
+
+	> div {
+		width: 100%;
+		display: flex;
+		padding: 0 7.5%;
+		flex-wrap: wrap;
+		box-sizing: border-box;
+	}
+}
